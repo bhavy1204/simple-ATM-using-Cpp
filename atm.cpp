@@ -4,10 +4,11 @@ using namespace std;
 class atm
 {
 private:
+double balance=0;
 public:
-    void balance()
+    void balance1()
     {
-        cout << "BALANCE IS 00000" << endl;
+        cout << "BALANCE IS"<<balance << endl;
     }
     void menu()
     {
@@ -26,7 +27,7 @@ public:
             switch (choice)
             {
             case 1:
-                balance();
+                balance1();
                 break;
             case 2:
                 cout << "CREDIT" << endl;

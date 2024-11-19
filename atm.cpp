@@ -34,6 +34,12 @@ public:
         cout << "5. Transfer" << endl;
         cout << "6. Exit" << endl;
     }
+    void debit(){
+        float amount;
+        cout<<"Enter amount to be credit : ";
+        cin>>amount;
+        balance -=amount;
+    }
     void menu()
     {
         int choice;

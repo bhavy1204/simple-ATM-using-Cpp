@@ -1,5 +1,10 @@
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
+#include <string>
+#include <cstdlib> 
+#include <ctime> 
+
 using namespace std;
 class atm
 {
@@ -7,9 +12,54 @@ private:
     double balance = 0;
 
 public:
-//Create account
-void account(){
-    
+//History 
+void history(){
+    string filename, line;
+
+    // Ask for the filename
+    cout << "Enter the file name to view (e.g., 12345.txt): ";
+    cin >> filename;
+
+    // Read and display file contents
+    ifstream file(filename);
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            cout << line << endl;
+        }
+        file.close();
+    } else {
+        cout << "Error opening file! Ensure the file name is correct." << endl;
+    }
+}
+    //Create account
+    void account(){
+    string name, contact, filename;
+    int accountNumber;
+
+    // Input user details
+    cout << "Enter your name: ";
+    getline(cin, name);
+    cout << "Enter your contact information (phone/email): ";
+    getline(cin, contact);
+
+    // Generate a random account number
+    srand(time(0)); // Seed for randomness
+    accountNumber = rand() % 100000 + 1; // Random account number between 1 and 100000
+
+    // Create filename based on account number
+    filename = to_string(accountNumber) + ".txt";
+
+    // Write details to the file
+    ofstream file(filename);
+    if (file.is_open()) {
+        file << "Account Number: " << accountNumber << endl;
+        file << "Name: " << name << endl;
+        file << "Contact: " << contact << endl;
+        file.close();
+        cout << "Details saved in file: " << filename << endl;
+    } else {
+        cout << "Error creating file!" << endl;
+    }
 }
     // BALANCE------------------------------------------------------
     void balance1()

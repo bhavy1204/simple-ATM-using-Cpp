@@ -7,12 +7,16 @@ private:
     double balance = 0;
 
 public:
-    //BALANCE------------------------------------------------------
+//Create account
+void account(){
+    
+}
+    // BALANCE------------------------------------------------------
     void balance1()
     {
-        cout<<"-----------------------------------------------------------"<<endl;
+        cout << "-----------------------------------------------------------" << endl;
         cout << "CURRENT BALANCE IS  : " << balance << endl;
-        cout<<"-----------------------------------------------------------"<<endl;
+        cout << "-----------------------------------------------------------" << endl;
         cout << "1. Check balance" << endl;
         cout << "2. Credit" << endl;
         cout << "3. Debit" << endl;
@@ -20,56 +24,60 @@ public:
         cout << "5. Transfer" << endl;
         cout << "6. Exit" << endl;
     }
-
-    //CREDIT-------------------------------------------------------
+    // CREDIT-------------------------------------------------------
     void credit()
     {
-        cout << "\n-----------------------------------------------------\n"<< endl;
+        cout << "\n-----------------------------------------------------\n"
+             << endl;
         float amount;
         cout << "Enter amount to credit : ";
         cin >> amount;
         if (amount > 1000000)
         {
             cout << " Cash overflow... Credit NOT SUCCESS " << endl;
-            cout << "Present balance : " << balance<<endl;
+            cout << "Present balance : " << balance << endl;
         }
-        else if (amount<= 0)
+        else if (amount <= 0)
         {
             cout << "Insuffiecient amount to be credited.. Credit NOT SUCCESS " << endl;
-            cout << "Present balance : " << balance<<endl;
+            cout << "Present balance : " << balance << endl;
         }
         else
         {
             balance += amount;
-            cout<<"Credited successfully . Your current balance is : "<<balance<<endl;
+            cout << "Credited successfully . Your current balance is : " << balance << endl;
         }
-        cout << "\n\n----------------------------------------------------\n"<< endl;
+        cout << "\n\n----------------------------------------------------\n"
+             << endl;
         cout << "1. Check balance" << endl;
         cout << "2. Credit" << endl;
         cout << "3. Debit" << endl;
         cout << "4. History" << endl;
         cout << "5. Transfer" << endl;
+        cout << "7. Create account " << endl;
         cout << "6. Exit" << endl;
     }
-    //DEBIT-----------------------------------------------
+    // DEBIT-----------------------------------------------
     void debit()
     {
-        cout<<"--------------------------------------------------------------"<<endl;
+        cout << "--------------------------------------------------------------" << endl;
         float amount;
         cout << "Enter amount to be credit : ";
         cin >> amount;
         if (amount == 0 || amount < 0)
         {
-            cout << "Invalid amount debit unsuccessful."<<endl;
+            cout << "Invalid amount debit unsuccessful." << endl;
             cout << "Present balance : " << balance;
-        }else if(amount>balance){
-            cout<<"Insufficient balance debit unsuccessful.";
+        }
+        else if (amount > balance)
+        {
+            cout << "Insufficient balance debit unsuccessful.";
             cout << "Present balance : " << balance;
         }
         else
         {
             balance -= amount;
-            cout<<"Debited successfully . Your current balance is : "<<balance<<endl;
+            cout << "Debited successfully . Your current balance is : " << balance << endl;
         }
         cout << "------------------------------------------------------" << endl;
         cout << "1. Check balance" << endl;
@@ -79,6 +87,7 @@ public:
         cout << "5. Transfer" << endl;
         cout << "6. Exit" << endl;
     }
+    //MENU-----------------------------------------------------------------------
     void menu()
     {
         int choice;
@@ -88,6 +97,7 @@ public:
         cout << "3. Debit" << endl;
         cout << "4. History" << endl;
         cout << "5. Transfer" << endl;
+        cout<<"7. Create account"<<endl;
         cout << "6. Exit" << endl;
         do
         {
@@ -113,12 +123,16 @@ public:
             case 6:
                 cout << "THANK YOU FOR BANKING WITH US !" << endl;
                 break;
+            case 7:
+                cout << "Creating account " << endl;
+                break;
             default:
                 cout << "INAVLID CHOICE " << endl;
                 break;
             }
         } while (choice != 6);
     }
+    //VALIDATE--------------------------------------------------------------
     bool validate(int a)
     {
         if (a == 1204)

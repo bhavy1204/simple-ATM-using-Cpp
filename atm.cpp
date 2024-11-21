@@ -12,8 +12,8 @@ private:
     double balance = 0;
 
 public:
-//History 
-void history(){
+    //History 
+    void history(){
     string filename, line;
 
     // Ask for the filename
@@ -165,7 +165,7 @@ void history(){
                 debit();
                 break;
             case 4:
-                cout << "History" << endl;
+                history();
                 break;
             case 5:
                 cout << "Transfer" << endl;
@@ -174,7 +174,7 @@ void history(){
                 cout << "THANK YOU FOR BANKING WITH US !" << endl;
                 break;
             case 7:
-                cout << "Creating account " << endl;
+                account();
                 break;
             default:
                 cout << "INAVLID CHOICE " << endl;

@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
-#include <cstdlib> 
-#include <ctime> 
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 class atm
@@ -12,55 +12,109 @@ private:
     double balance = 0;
 
 public:
-    //History 
-    void history(){
-    string filename, line;
+    // MENU-----------------------------------------------------------------------
+    void menu()
+    {
+        int choice;
+        cout << "------------------------------------------------------" << endl;
+        cout << "1. Check balance" << endl;
+        cout << "2. Credit" << endl;
+        cout << "3. Debit" << endl;
+        cout << "4. History" << endl;
+        cout << "5. Transfer" << endl;
+        cout << "7. Create account" << endl;
+        cout << "6. Exit" << endl;
+        do
+        {
+            cout << "Enter >> ";
+            cin >> choice;
+            switch (choice)
+            {
+            case 1:
+                balance1();
+                break;
+            case 2:
+                credit();
+                break;
+            case 3:
+                debit();
+                break;
+            case 4:
+                history();
+                break;
+            case 5:
+                cout << "Transfer" << endl;
+                break;
+            case 6:
+                cout << "THANK YOU FOR BANKING WITH US !" << endl;
+                break;
+            case 7:
+                account();
+                break;
+            default:
+                cout << "INAVLID CHOICE " << endl;
+                break;
+            }
+        } while (choice != 6);
+    }
+    // History
+    void history()
+    {
+        string filename, line;
 
-    // Ask for the filename
-    cout << "Enter the file name to view (e.g., 12345.txt): ";
-    cin >> filename;
+        // Ask for the filename
+        cout << "Enter the file name to view (e.g., 12345.txt): ";
+        cin >> filename;
 
-    // Read and display file contents
-    ifstream file(filename);
-    if (file.is_open()) {
-        while (getline(file, line)) {
-            cout << line << endl;
+        // Read and display file contents
+        ifstream file(filename);
+        if (file.is_open())
+        {
+            while (getline(file, line))
+            {
+                cout << line << endl;
+            }
+            file.close();
         }
-        file.close();
-    } else {
-        cout << "Error opening file! Ensure the file name is correct." << endl;
+        else
+        {
+            cout << "Error opening file! Ensure the file name is correct." << endl;
+        }
     }
-}
-    //Create account
-    void account(){
-    string name, contact, filename;
-    int accountNumber;
+    // Create account
+    void account()
+    {
+        string name, contact, filename;
+        int accountNumber;
 
-    // Input user details
-    cout << "Enter your name: ";
-    getline(cin, name);
-    cout << "Enter your contact information (phone/email): ";
-    getline(cin, contact);
+        // Input user details
+        cout << "Enter your name: ";
+        getline(cin, name);
+        cout << "Enter your contact information (phone/email): ";
+        getline(cin, contact);
 
-    // Generate a random account number
-    srand(time(0)); // Seed for randomness
-    accountNumber = rand() % 100000 + 1; // Random account number between 1 and 100000
+        // Generate a random account number
+        srand(time(0));                      // Seed for randomness
+        accountNumber = rand() % 100000 + 1; // Random account number between 1 and 100000
 
-    // Create filename based on account number
-    filename = to_string(accountNumber) + ".txt";
+        // Create filename based on account number
+        filename = to_string(accountNumber) + ".txt";
 
-    // Write details to the file
-    ofstream file(filename);
-    if (file.is_open()) {
-        file << "Account Number: " << accountNumber << endl;
-        file << "Name: " << name << endl;
-        file << "Contact: " << contact << endl;
-        file.close();
-        cout << "Details saved in file: " << filename << endl;
-    } else {
-        cout << "Error creating file!" << endl;
+        // Write details to the file
+        ofstream file(filename);
+        if (file.is_open())
+        {
+            file << "Account Number: " << accountNumber << endl;
+            file << "Name: " << name << endl;
+            file << "Contact: " << contact << endl;
+            file.close();
+            cout << "Details saved in file: " << filename << endl;
+        }
+        else
+        {
+            cout << "Error creating file!" << endl;
+        }
     }
-}
     // BALANCE------------------------------------------------------
     void balance1()
     {
@@ -137,52 +191,7 @@ public:
         cout << "5. Transfer" << endl;
         cout << "6. Exit" << endl;
     }
-    //MENU-----------------------------------------------------------------------
-    void menu()
-    {
-        int choice;
-        cout << "------------------------------------------------------" << endl;
-        cout << "1. Check balance" << endl;
-        cout << "2. Credit" << endl;
-        cout << "3. Debit" << endl;
-        cout << "4. History" << endl;
-        cout << "5. Transfer" << endl;
-        cout<<"7. Create account"<<endl;
-        cout << "6. Exit" << endl;
-        do
-        {
-            cout << "Enter >> ";
-            cin >> choice;
-            switch (choice)
-            {
-            case 1:
-                balance1();
-                break;
-            case 2:
-                credit();
-                break;
-            case 3:
-                debit();
-                break;
-            case 4:
-                history();
-                break;
-            case 5:
-                cout << "Transfer" << endl;
-                break;
-            case 6:
-                cout << "THANK YOU FOR BANKING WITH US !" << endl;
-                break;
-            case 7:
-                account();
-                break;
-            default:
-                cout << "INAVLID CHOICE " << endl;
-                break;
-            }
-        } while (choice != 6);
-    }
-    //VALIDATE--------------------------------------------------------------
+    // VALIDATE--------------------------------------------------------------
     bool validate(int a)
     {
         if (a == 1204)
@@ -204,7 +213,6 @@ int main()
     atm user;
     cout << "                     Welcome to BANK ATM             " << endl;
     cout << "--------------------------------------------------------------" << endl;
-
     while (true)
     {
         cout << "Enter Y to continue or N to exit \nEnter >>  ";
@@ -217,9 +225,6 @@ int main()
             {
                 user.menu();
             }
-
-            user.validate(pin);
-            break;
         }
         else if (choice == 'N' || choice == 'n')
         {
@@ -231,6 +236,5 @@ int main()
             cout << "  >>Inavlid choice. Please enter your choice aagain!<< " << endl;
         }
     };
-
     return 0;
 }

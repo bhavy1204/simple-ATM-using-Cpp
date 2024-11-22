@@ -63,7 +63,7 @@ public:
         string filename, line;
 
         // Ask for the filename
-        cout << "Enter the file name to view (e.g., 12345.txt): ";
+        cout << "Enter account number (AccNum.txt): ";
         cin >> filename;
 
         // Read and display file contents
@@ -78,7 +78,7 @@ public:
         }
         else
         {
-            cout << "Error opening file! Ensure the file name is correct." << endl;
+            cout << "Account information not found." << endl;
         }
     }
     // Create account
@@ -95,7 +95,7 @@ public:
 
         // Generate a random account number
         srand(time(0));                      // Seed for randomness
-        accountNumber = rand() % 100000 + 1; // Random account number between 1 and 100000
+        accountNumber = rand() % 100000 + 999999; // Random account number between 1 and 100000
 
         // Create filename based on account number
         filename = to_string(accountNumber) + ".txt";
@@ -112,16 +112,16 @@ public:
         }
         else
         {
-            cout << "Error creating file!" << endl;
+            cout << "Error creating Account! Please try again." << endl;
         }
     }
     // BALANCE------------------------------------------------------
     void balance1()
     {
-        cout << "-----------------------------------------------------------" << endl;
+        cout << "----------------------------------------------------------" << endl;
         cout << "CURRENT BALANCE IS  : " << balance << endl;
-        cout << "-----------------------------------------------------------" << endl;
-        cout << "1. Check balance" << endl;
+        cout << "----------------------------------------------------------" << endl;
+        cout << "\n1. Check balance" << endl;
         cout << "2. Credit" << endl;
         cout << "3. Debit" << endl;
         cout << "4. History" << endl;

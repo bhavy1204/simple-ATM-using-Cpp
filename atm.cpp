@@ -92,15 +92,9 @@ public:
         getline(cin, name);
         cout << "Enter your contact information (phone/email): ";
         getline(cin, contact);
-
-        // Generate a random account number
-        srand(time(0));                      // Seed for randomness
-        accountNumber = rand() % 100000 + 999999; // Random account number between 1 and 100000
-
-        // Create filename based on account number
+        srand(time(0));                      
+        accountNumber = rand() % 1000 + 9999;
         filename = to_string(accountNumber) + ".txt";
-
-        // Write details to the file
         ofstream file(filename);
         if (file.is_open())
         {

@@ -22,7 +22,6 @@ public:
         cout << "3. Debit" << endl;
         cout << "4. History" << endl;
         cout << "5. Transfer" << endl;
-        cout << "7. Create account" << endl;
         cout << "6. Exit" << endl;
         do
         {
@@ -49,7 +48,7 @@ public:
                 cout << "THANK YOU FOR BANKING WITH US !" << endl;
                 break;
             case 7:
-                account();
+                cout<<"In progress"<<endl;
                 break;
             default:
                 cout << "INAVLID CHOICE " << endl;
@@ -62,11 +61,9 @@ public:
     {
         string filename, line;
 
-        // Ask for the filename
-        cout << "Enter account number (AccNum.txt): ";
+        cout << "Enter account number : ";
         cin >> filename;
-
-        // Read and display file contents
+        filename= (filename)+".txt";
         ifstream file(filename);
         if (file.is_open())
         {
@@ -81,34 +78,33 @@ public:
             cout << "Account information not found." << endl;
         }
     }
-    // Create account
-    void account()
-    {
-        string name, contact, filename;
-        int accountNumber;
-
-        // Input user details
-        cout << "Enter your name: ";
-        getline(cin, name);
-        cout << "Enter your contact information (phone/email): ";
-        getline(cin, contact);
-        srand(time(0));                      
-        accountNumber = rand() % 1000 + 9999;
-        filename = to_string(accountNumber) + ".txt";
-        ofstream file(filename);
-        if (file.is_open())
-        {
-            file << "Account Number: " << accountNumber << endl;
-            file << "Name: " << name << endl;
-            file << "Contact: " << contact << endl;
-            file.close();
-            cout << "Details saved in file: " << filename << endl;
-        }
-        else
-        {
-            cout << "Error creating Account! Please try again." << endl;
-        }
-    }
+    // // Create account
+    // void account()
+    // {
+    //     string name, contact, filename;
+    //     int accountNumber;
+    //     // Input user details
+    //     cout << "Enter your name: ";
+    //     getline(cin, name);
+    //     cout << "Enter your contact information (phone/email): ";
+    //     getline(cin, contact);
+    //     srand(time(0));                      
+    //     accountNumber = rand() % 1000 + 9999;
+    //     filename = to_string(accountNumber) + ".txt";
+    //     ofstream file(filename);
+    //     if (file.is_open())
+    //     {
+    //         file << "Account Number: " << accountNumber << endl;
+    //         file << "Name: " << name << endl;
+    //         file << "Contact: " << contact << endl;
+    //         file.close();
+    //         cout << "Details saved in file: " << filename << endl;
+    //     }
+    //     else
+    //     {
+    //         cout << "Error creating Account! Please try again." << endl;
+    //     }
+    // }
     // BALANCE------------------------------------------------------
     void balance1()
     {

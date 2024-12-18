@@ -1,2 +1,2 @@
-this is a demo history file .Amount credited: 50 | Date: 2024-12-18
+Amount credited: 50 | Date: 2024-12-18
 Amount credited: 250 | Date: 2024-12-18

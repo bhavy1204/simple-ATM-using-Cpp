@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 
 using namespace std;
 class atm
@@ -48,7 +49,7 @@ public:
                 cout << "THANK YOU FOR BANKING WITH US !" << endl;
                 break;
             case 7:
-                cout<<"In progress"<<endl;
+                cout << "In progress" << endl;
                 break;
             default:
                 cout << "INAVLID CHOICE " << endl;
@@ -63,7 +64,7 @@ public:
 
         cout << "Enter account number : ";
         cin >> filename;
-        filename= (filename)+".txt";
+        filename = (filename) + ".txt";
         ifstream file(filename);
         if (file.is_open())
         {
@@ -88,7 +89,7 @@ public:
     //     getline(cin, name);
     //     cout << "Enter your contact information (phone/email): ";
     //     getline(cin, contact);
-    //     srand(time(0));                      
+    //     srand(time(0));
     //     accountNumber = rand() % 1000 + 9999;
     //     filename = to_string(accountNumber) + ".txt";
     //     ofstream file(filename);
@@ -172,6 +173,17 @@ public:
         {
             balance -= amount;
             cout << "Debited successfully . Your current balance is : " << balance << endl;
+            ofstream temp("temp.txt", std::ios::app);
+            // Get current date
+            std::time_t t = std::time(nullptr);
+            std::tm *now = std::localtime(&t);
+
+            // Write amount and date to the file
+            temp << "Amount credited: " << amount << " | Date: "
+                 << (now->tm_year + 1900) << "-"
+                 << std::setfill('0') << std::setw(2) << (now->tm_mon + 1) << "-"
+                 << std::setfill('0') << std::setw(2) << now->tm_mday
+                 << "\n";
         }
         cout << "------------------------------------------------------" << endl;
         cout << "1. Check balance" << endl;

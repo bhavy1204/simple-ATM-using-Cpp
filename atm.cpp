@@ -174,15 +174,15 @@ public:
             balance -= amount;
             cout << "Debited successfully . Your current balance is : " << balance << endl;
             ofstream temp("temp.txt", std::ios::app);
-            // Get current date
-            std::time_t t = std::time(nullptr);
-            std::tm *now = std::localtime(&t);
+            
+            time_t t = time(nullptr);
+            tm *now = localtime(&t);
 
             // Write amount and date to the file
             temp << "Amount credited: " << amount << " | Date: "
                  << (now->tm_year + 1900) << "-"
-                 << std::setfill('0') << std::setw(2) << (now->tm_mon + 1) << "-"
-                 << std::setfill('0') << std::setw(2) << now->tm_mday
+                 << setfill('0') << setw(2) << (now->tm_mon + 1) << "-"
+                 << setfill('0') <<setw(2) << now->tm_mday
                  << "\n";
         }
         cout << "------------------------------------------------------" << endl;

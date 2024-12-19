@@ -1,1 +1,1 @@
-Amount debited: 100 | Date: 124-12-19
+Amount Credited: 12000 | Date: 2024-12-19

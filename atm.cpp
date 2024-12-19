@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <ios>
 #include <ctime>
 #include <iomanip>
 
@@ -141,6 +142,17 @@ public:
         {
             balance += amount;
             cout << "Credited successfully . Your current balance is : " << balance << endl;
+
+            ofstream temp("UserFile.txt", ios::app);
+
+            time_t t = time(nullptr);
+            tm *now = localtime(&t);
+
+            temp << "Amount Credited: " << amount << " | Date: "
+                 << (now->tm_year + 1900) << "-"
+                 << setfill('0') << setw(2) << (now->tm_mon + 1) << "-"
+                 << setfill('0') << setw(2) << now->tm_mday
+                 << "\n";
         }
         cout << "\n\n----------------------------------------------------\n"
              << endl;
@@ -155,34 +167,34 @@ public:
     // DEBIT-----------------------------------------------
     void debit()
     {
-        cout << "--------------------------------------------------------------" << endl;
+        cout << "----------------------------------------------------------" << endl;
         float amount;
-        cout << "Enter amount to be credit : ";
+        cout << "Enter amount  : ";
         cin >> amount;
-        if (amount == 0 || amount < 0)
+        if (amount <= 0)
         {
-            cout << "Invalid amount debit unsuccessful." << endl;
+            cout << "Invalid amount, debit unsuccessful." << endl;
             cout << "Present balance : " << balance;
         }
         else if (amount > balance)
         {
-            cout << "Insufficient balance debit unsuccessful.";
+            cout << "Insufficient balance, debit unsuccessful.";
             cout << "Present balance : " << balance;
         }
         else
         {
             balance -= amount;
-            cout << "Debited successfully . Your current balance is : " << balance << endl;
-            ofstream temp("temp.txt", std::ios::app);
-            
+            cout << "Debited successfully. Your current balance is : " << balance << endl;
+            ofstream temp("UserFile.txt", ios::app);
+
             time_t t = time(nullptr);
             tm *now = localtime(&t);
 
             // Write amount and date to the file
-            temp << "Amount credited: " << amount << " | Date: "
+            temp << "Amount Debited : " << amount << " | Date: "
                  << (now->tm_year + 1900) << "-"
                  << setfill('0') << setw(2) << (now->tm_mon + 1) << "-"
-                 << setfill('0') <<setw(2) << now->tm_mday
+                 << setfill('0') << setw(2) << now->tm_mday
                  << "\n";
         }
         cout << "------------------------------------------------------" << endl;
@@ -197,13 +209,9 @@ public:
     bool validate(int a)
     {
         if (a == 1204)
-        {
             return true;
-        }
         else
-        {
             return false;
-        };
     }
 };
 
@@ -213,7 +221,7 @@ int main()
     int pin;
     system("cls");
     atm user;
-    cout << "                     Welcome to BANK ATM             " << endl;
+    cout << setw(10) << "Welcome to BANK ATM" << setw(10) << endl;
     cout << "--------------------------------------------------------------" << endl;
     while (true)
     {

@@ -6,6 +6,7 @@
 #include <ios>
 #include <ctime>
 #include <iomanip>
+#include <chrono>
 
 using namespace std;
 class atm
@@ -220,6 +221,7 @@ int main()
     char choice;
     int pin;
     system("cls");
+        auto start = std::chrono::high_resolution_clock::now();
     atm user;
     cout << setw(10) << "Welcome to BANK ATM" << setw(10) << endl;
     cout << "--------------------------------------------------------------" << endl;
@@ -245,6 +247,14 @@ int main()
         {
             cout << "  >>Inavlid choice. Please enter your choice aagain!<< " << endl;
         }
-    };
+    }
+        // End the timer
+    auto end = std::chrono::high_resolution_clock::now();
+
+    // Calculate duration
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    // Print the duration
+    std::cout << "Time taken by nested loop: " << duration.count() << " milliseconds" << std::endl;
     return 0;
 }

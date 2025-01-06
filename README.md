@@ -1,1 +1,2 @@
 <h3>This is a simple at machine of a bank with features like debit,credit and transfer money to anoter account.</h3>
+> In this you can credit and withdraw money with maintaining your history your AccountNumbdr.txt file. You can also transfer money to another account in this AnotherAcoount.txt and that history will also be maintained. 
